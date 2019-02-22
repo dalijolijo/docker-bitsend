@@ -1,0 +1,7 @@
+sudo: required
+services:
+  - docker
+script: docker build -t bitsendd . && ( docker run bitsendd -version | tee /dev/stderr | grep -q $(cat VERSION) ) 2>&1
+notifications:
+  email:
+    on_success: never
